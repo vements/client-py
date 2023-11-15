@@ -1,3 +1,5 @@
+[![Build and Test](https://github.com/vements/client-py/actions/workflows/build-test.yaml/badge.svg?event=push)](https://github.com/vements/client-py/actions/workflows/build-test.yaml)
+
 ## Vements Client Library for Python
 
 The Vements Client Library for Python is a Python library for accessing the Vements API.  It also includes a command line tool that can be used to interact with the API in scripts or in a terminal.
