@@ -35,7 +35,7 @@ class Setup:
     def __init__(self):
         tags = {"development", "host", "substitute"}
 
-        cc = client.ClientConfig(api_key=None, tags=tags)
+        cc = client.ClientConfig(api_key="has to be something to skip env check", tags=tags)
         print("server url:", cc.server_url)
 
         try:
@@ -50,9 +50,7 @@ class Setup:
         api_key_v = f"{api_key['project_id']}:{api_key['api_key_id']}"
         print("api key:", api_key_v)
 
-        self.client = client.Client(
-            client_config=client.ClientConfig(api_key=api_key_v, tags=tags)
-        )
+        self.client = client.Client(client_config=client.ClientConfig(api_key=api_key_v, tags=tags))
         self.api = api.API(client=self.client, output=api.Output.OBJECT)
         self.fake = Faker()
 
@@ -441,4 +439,3 @@ def test_scoreboard_delete():
 
     assert result
     assert isinstance(result, types.ScoreboardDeleteResponse)
-
