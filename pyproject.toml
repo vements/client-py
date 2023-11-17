@@ -6,9 +6,9 @@ build-backend = "hatchling.build"
 name = "vements"
 version = "0.0.1"
 authors = [
-  { name="Support Contact", email="contact@vements.io" },
+  { name="Vements Support", email="support@vements.io" },
 ]
-description = "Vements is achievements and scoreboards for everyone."
+description = "Achievements and Scoreboards for Everyone"
 readme = "README.md"
 requires-python = ">=3.7"
 classifiers = [
@@ -18,5 +18,5 @@ classifiers = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/vements/clients"
-"Bug Tracker" = "https://github.com/vements/clients/issues"
+"Homepage" = "https://github.com/vements/client-py"
+"Bug Tracker" = "https://github.com/vements/client-py/issues"
