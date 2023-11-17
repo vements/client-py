@@ -104,6 +104,8 @@ jobs:
 
   notify:
     runs-on: ubuntu-latest
+    needs:
+    - github-release
     steps:
       - name: Send Telegram Notification
         uses: appleboy/telegram-action@master

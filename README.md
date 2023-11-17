@@ -1,4 +1,6 @@
-[![Build and Test](https://github.com/vements/client-py/actions/workflows/build-test.yaml/badge.svg?event=push)](https://github.com/vements/client-py/actions/workflows/build-test.yaml)
+[![Build and Test](https://github.com/vements/client-py/actions/workflows/build-test.yaml/badge.svg?event=push)](https://github.com/vements/client-py/actions/workflows/build-test.yaml) [![GitHub tag](https://img.shields.io/github/tag/vements/client-py?include_prereleases=&sort=semver&color=blue)](https://github.com/vements/client-py/releases/)
+[![License](https://img.shields.io/badge/License-MIT-blue)](#license)
+[![issues - client-py](https://img.shields.io/github/issues/vements/client-py)](https://github.com/vements/client-py/issues)
 
 ## Vements Client Library for Python
 
