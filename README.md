@@ -9,7 +9,7 @@ The Vements Client Library for Python is a Python library for accessing the Veme
 
 ### Documentation
 
-See the [Python API docs](https://vements.io/docs/clients/python/) for more information on how to use this library.
+See the [Getting Started Guide](https://vements.io/docs/guides/getting-started/) for more information on how to use this library.
 
 ### Installation
 
