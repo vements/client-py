@@ -23,7 +23,7 @@ def main():
     player = random.randint(0, 10000)
     api = API(api_key=API_KEY)
 
-    response = api.participant.create(
+    participant = api.participant.create(
         project_id=PROJECT_ID,
         display=f"Example Player {player}",
         external_id=f"example player {player}",
@@ -31,7 +31,6 @@ def main():
         extra=None,
     )
 
-    participant = response.insert_participant_one
     print("Participant Created: " + participant["participant_id"])
 
     for _ in range(5):
@@ -42,8 +41,8 @@ def main():
             recorded=datetime.datetime.now().isoformat(),
         )
 
-    response = api.scoreboard.scores(scoreboard_id=SCOREBOARD_ID)
-    for score in response.scoreboard_scores:
+    scores = api.scoreboard.scores(scoreboard_id=SCOREBOARD_ID)
+    for score in scores:
         print(
             f"Rank: {score['rank']} Player: {score['participant']['display']} Total: {score['total']}"
         )

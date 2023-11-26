@@ -24,6 +24,7 @@
 
 from datetime import datetime
 from enum import Enum
+from json import dumps as json_dumps, loads as json_loads
 from sys import stderr
 from typing import Optional, Set
 
@@ -57,9 +58,6 @@ class Achievement(Resource):
         """Achievement leaderboard
 
         Reads and returns achievement leaderboard
-
-        This is a GET operation.  It returns the response text
-        or an instance of AchievementLeaderboardResponse.
         """
         path = f"/achievement/{achievement_id}/leaderboard"
         params = {}
@@ -75,9 +73,9 @@ class Achievement(Resource):
             )
             return
         return (
-            response.text
+            json_dumps(json_loads(response.text)["achievement_leaderboard"])
             if self._output == Output.TEXT
-            else types.AchievementLeaderboardResponse(**response.json())
+            else types.AchievementLeaderboardResponse(**response.json()).achievement_leaderboard
         )
 
     def record(
@@ -90,9 +88,6 @@ class Achievement(Resource):
         """Record achievement progress
 
         Records and returns achievement progress
-
-        This is a PUT operation.  It returns the response text
-        or an instance of AchievementProgressResponse.
         """
         path = f"/achievement/{achievement_id}/progress"
         params = {}
@@ -111,9 +106,9 @@ class Achievement(Resource):
             )
             return
         return (
-            response.text
+            json_dumps(json_loads(response.text)["insert_progress_one"])
             if self._output == Output.TEXT
-            else types.AchievementProgressResponse(**response.json())
+            else types.AchievementProgressResponse(**response.json()).insert_progress_one
         )
 
     def list(
@@ -125,9 +120,6 @@ class Achievement(Resource):
         """List achievements
 
         Reads and returns list of achievements in the given project
-
-        This is a GET operation.  It returns the response text
-        or an instance of AchievementListResponse.
         """
         path = f"/achievement"
         params = {}
@@ -149,9 +141,9 @@ class Achievement(Resource):
             )
             return
         return (
-            response.text
+            json_dumps(json_loads(response.text)["achievement"])
             if self._output == Output.TEXT
-            else types.AchievementListResponse(**response.json())
+            else types.AchievementListResponse(**response.json()).achievement
         )
 
     def create(
@@ -169,9 +161,6 @@ class Achievement(Resource):
         """Create achievement
 
         Creates and returns achievement in the given project
-
-        This is a PUT operation.  It returns the response text
-        or an instance of AchievementCreateResponse.
         """
         path = f"/achievement"
         params = {}
@@ -196,9 +185,9 @@ class Achievement(Resource):
             )
             return
         return (
-            response.text
+            json_dumps(json_loads(response.text)["insert_achievement_one"])
             if self._output == Output.TEXT
-            else types.AchievementCreateResponse(**response.json())
+            else types.AchievementCreateResponse(**response.json()).insert_achievement_one
         )
 
     def read(
@@ -208,9 +197,6 @@ class Achievement(Resource):
         """Read achievement
 
         Reads and returns achievement by achievement id
-
-        This is a GET operation.  It returns the response text
-        or an instance of AchievementReadResponse.
         """
         path = f"/achievement/{achievement_id}"
         params = {}
@@ -226,9 +212,9 @@ class Achievement(Resource):
             )
             return
         return (
-            response.text
+            json_dumps(json_loads(response.text)["achievement"])
             if self._output == Output.TEXT
-            else types.AchievementReadResponse(**response.json())
+            else types.AchievementReadResponse(**response.json()).achievement
         )
 
     def update(
@@ -246,9 +232,6 @@ class Achievement(Resource):
         """Update achievement
 
         Updates and returns achievement by achievement id
-
-        This is a POST operation.  It returns the response text
-        or an instance of AchievementUpdateResponse.
         """
         path = f"/achievement/{achievement_id}"
         params = {}
@@ -275,9 +258,9 @@ class Achievement(Resource):
             )
             return
         return (
-            response.text
+            json_dumps(json_loads(response.text)["update_achievement_by_pk"])
             if self._output == Output.TEXT
-            else types.AchievementUpdateResponse(**response.json())
+            else types.AchievementUpdateResponse(**response.json()).update_achievement_by_pk
         )
 
     def delete(
@@ -287,9 +270,6 @@ class Achievement(Resource):
         """Delete achievement by id.
 
         Delete achievement by achievement id
-
-        This is a DELETE operation.  It returns the response text
-        or an instance of AchievementDeleteResponse.
         """
         path = f"/achievement/{achievement_id}"
 
@@ -307,9 +287,9 @@ class Achievement(Resource):
             )
             return
         return (
-            response.text
+            json_dumps(json_loads(response.text)["delete_achievement_by_pk"])
             if self._output == Output.TEXT
-            else types.AchievementDeleteResponse(**response.json())
+            else True
         )
 
 
@@ -321,9 +301,6 @@ class Participant(Resource):
         """Participant progress
 
         Reads and returns participant progress.
-
-        This is a GET operation.  It returns the response text
-        or an instance of ParticipantProgressResponse.
         """
         path = f"/participant/{participant_id}/progress"
         params = {}
@@ -339,9 +316,9 @@ class Participant(Resource):
             )
             return
         return (
-            response.text
+            json_dumps(json_loads(response.text)["participant_progress"])
             if self._output == Output.TEXT
-            else types.ParticipantProgressResponse(**response.json())
+            else types.ParticipantProgressResponse(**response.json()).participant_progress
         )
 
     def scores(
@@ -351,9 +328,6 @@ class Participant(Resource):
         """Participant scores
 
         Reads and returns participant scores.
-
-        This is a GET operation.  It returns the response text
-        or an instance of ParticipantScoresResponse.
         """
         path = f"/participant/{participant_id}/scores"
         params = {}
@@ -369,9 +343,9 @@ class Participant(Resource):
             )
             return
         return (
-            response.text
+            json_dumps(json_loads(response.text)["participant_scores"])
             if self._output == Output.TEXT
-            else types.ParticipantScoresResponse(**response.json())
+            else types.ParticipantScoresResponse(**response.json()).participant_scores
         )
 
     def list(
@@ -383,9 +357,6 @@ class Participant(Resource):
         """List participants
 
         Reads and returns list of participants in the given project
-
-        This is a GET operation.  It returns the response text
-        or an instance of ParticipantListResponse.
         """
         path = f"/participant"
         params = {}
@@ -407,9 +378,9 @@ class Participant(Resource):
             )
             return
         return (
-            response.text
+            json_dumps(json_loads(response.text)["participant"])
             if self._output == Output.TEXT
-            else types.ParticipantListResponse(**response.json())
+            else types.ParticipantListResponse(**response.json()).participant
         )
 
     def create(
@@ -423,9 +394,6 @@ class Participant(Resource):
         """Create participant
 
         Creates and returns participant in the given project
-
-        This is a PUT operation.  It returns the response text
-        or an instance of ParticipantCreateResponse.
         """
         path = f"/participant"
         params = {}
@@ -446,9 +414,9 @@ class Participant(Resource):
             )
             return
         return (
-            response.text
+            json_dumps(json_loads(response.text)["insert_participant_one"])
             if self._output == Output.TEXT
-            else types.ParticipantCreateResponse(**response.json())
+            else types.ParticipantCreateResponse(**response.json()).insert_participant_one
         )
 
     def read(
@@ -458,9 +426,6 @@ class Participant(Resource):
         """Read participant
 
         Reads and returns participant by participant id
-
-        This is a GET operation.  It returns the response text
-        or an instance of ParticipantReadResponse.
         """
         path = f"/participant/{participant_id}"
         params = {}
@@ -476,9 +441,9 @@ class Participant(Resource):
             )
             return
         return (
-            response.text
+            json_dumps(json_loads(response.text)["participant"])
             if self._output == Output.TEXT
-            else types.ParticipantReadResponse(**response.json())
+            else types.ParticipantReadResponse(**response.json()).participant
         )
 
     def update(
@@ -492,9 +457,6 @@ class Participant(Resource):
         """Update participant
 
         Updates and returns participant by participant id
-
-        This is a POST operation.  It returns the response text
-        or an instance of ParticipantUpdateResponse.
         """
         path = f"/participant/{participant_id}"
         params = {}
@@ -517,9 +479,9 @@ class Participant(Resource):
             )
             return
         return (
-            response.text
+            json_dumps(json_loads(response.text)["update_participant_by_pk"])
             if self._output == Output.TEXT
-            else types.ParticipantUpdateResponse(**response.json())
+            else types.ParticipantUpdateResponse(**response.json()).update_participant_by_pk
         )
 
     def delete(
@@ -529,9 +491,6 @@ class Participant(Resource):
         """Delete participant by id.
 
         Delete participant by participant id
-
-        This is a DELETE operation.  It returns the response text
-        or an instance of ParticipantDeleteResponse.
         """
         path = f"/participant/{participant_id}"
 
@@ -549,9 +508,9 @@ class Participant(Resource):
             )
             return
         return (
-            response.text
+            json_dumps(json_loads(response.text)["delete_participant_by_pk"])
             if self._output == Output.TEXT
-            else types.ParticipantDeleteResponse(**response.json())
+            else True
         )
 
 
@@ -566,9 +525,6 @@ class Scoreboard(Resource):
         """Record a scoreboard score
 
         Records and returns a scoreboard score.
-
-        This is a PUT operation.  It returns the response text
-        or an instance of ScoreboardScoreResponse.
         """
         path = f"/scoreboard/{scoreboard_id}/score"
         params = {}
@@ -587,9 +543,9 @@ class Scoreboard(Resource):
             )
             return
         return (
-            response.text
+            json_dumps(json_loads(response.text)["insert_score_one"])
             if self._output == Output.TEXT
-            else types.ScoreboardScoreResponse(**response.json())
+            else types.ScoreboardScoreResponse(**response.json()).insert_score_one
         )
 
     def scores(
@@ -601,9 +557,6 @@ class Scoreboard(Resource):
         """Scoreboard scores
 
         Reads and returns scoreboard scores
-
-        This is a GET operation.  It returns the response text
-        or an instance of ScoreboardScoresResponse.
         """
         path = f"/scoreboard/{scoreboard_id}/scores"
         params = {}
@@ -623,9 +576,9 @@ class Scoreboard(Resource):
             )
             return
         return (
-            response.text
+            json_dumps(json_loads(response.text)["scoreboard_scores"])
             if self._output == Output.TEXT
-            else types.ScoreboardScoresResponse(**response.json())
+            else types.ScoreboardScoresResponse(**response.json()).scoreboard_scores
         )
 
     def list(
@@ -637,9 +590,6 @@ class Scoreboard(Resource):
         """List scoreboards
 
         Reads and returns list of scoreboards in the given project
-
-        This is a GET operation.  It returns the response text
-        or an instance of ScoreboardListResponse.
         """
         path = f"/scoreboard"
         params = {}
@@ -661,9 +611,9 @@ class Scoreboard(Resource):
             )
             return
         return (
-            response.text
+            json_dumps(json_loads(response.text)["scoreboard"])
             if self._output == Output.TEXT
-            else types.ScoreboardListResponse(**response.json())
+            else types.ScoreboardListResponse(**response.json()).scoreboard
         )
 
     def create(
@@ -677,9 +627,6 @@ class Scoreboard(Resource):
         """Create scoreboard
 
         Creates and returns scoreboard in the given project
-
-        This is a PUT operation.  It returns the response text
-        or an instance of ScoreboardCreateResponse.
         """
         path = f"/scoreboard"
         params = {}
@@ -700,9 +647,9 @@ class Scoreboard(Resource):
             )
             return
         return (
-            response.text
+            json_dumps(json_loads(response.text)["insert_scoreboard_one"])
             if self._output == Output.TEXT
-            else types.ScoreboardCreateResponse(**response.json())
+            else types.ScoreboardCreateResponse(**response.json()).insert_scoreboard_one
         )
 
     def read(
@@ -712,9 +659,6 @@ class Scoreboard(Resource):
         """Read scoreboard
 
         Reads and returns scoreboard by scoreboard id
-
-        This is a GET operation.  It returns the response text
-        or an instance of ScoreboardReadResponse.
         """
         path = f"/scoreboard/{scoreboard_id}"
         params = {}
@@ -730,9 +674,9 @@ class Scoreboard(Resource):
             )
             return
         return (
-            response.text
+            json_dumps(json_loads(response.text)["scoreboard"])
             if self._output == Output.TEXT
-            else types.ScoreboardReadResponse(**response.json())
+            else types.ScoreboardReadResponse(**response.json()).scoreboard
         )
 
     def update(
@@ -746,9 +690,6 @@ class Scoreboard(Resource):
         """Update scoreboard
 
         Updates and returns scoreboard by scoreboard id
-
-        This is a POST operation.  It returns the response text
-        or an instance of ScoreboardUpdateResponse.
         """
         path = f"/scoreboard/{scoreboard_id}"
         params = {}
@@ -771,9 +712,9 @@ class Scoreboard(Resource):
             )
             return
         return (
-            response.text
+            json_dumps(json_loads(response.text)["update_scoreboard_by_pk"])
             if self._output == Output.TEXT
-            else types.ScoreboardUpdateResponse(**response.json())
+            else types.ScoreboardUpdateResponse(**response.json()).update_scoreboard_by_pk
         )
 
     def delete(
@@ -783,9 +724,6 @@ class Scoreboard(Resource):
         """Delete scoreboard by id.
 
         Delete scoreboard by scoreboard id
-
-        This is a DELETE operation.  It returns the response text
-        or an instance of ScoreboardDeleteResponse.
         """
         path = f"/scoreboard/{scoreboard_id}"
 
@@ -803,9 +741,9 @@ class Scoreboard(Resource):
             )
             return
         return (
-            response.text
+            json_dumps(json_loads(response.text)["delete_scoreboard_by_pk"])
             if self._output == Output.TEXT
-            else types.ScoreboardDeleteResponse(**response.json())
+            else True
         )
 
 
